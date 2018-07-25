@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		<table border="1">
+			<tr>
+				<th><label for="name"> 이름</label></th>
+				<td><input type="text" id="name"></td>
+			</tr>
+			<tr>
+				<th><label for="birth">생년월일</label></th>
+				<td><input type="text" id="birth"></td>
+			</tr>
+			<tr>
+				<th><label for="email">Email</label></th>
+				<td><input type="text" id="email"></td>
+			</tr>
+			<tr>
+				<th><label for="id">ID</label></th>
+				<td><input type="text" id="id"></td>
+			</tr>
+			<tr>
+				<th><label for="pwd">Password</label></th>
+				<td><input type="password" id="pwd"></td>
+			</tr>
+			<tr>
+				<th><label for="trans">성별</label></th>
+				<td>
+					<select id="trans">
+						<option value="1">남</option>
+						<option value="2">여</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button type="button" 
+					onclick="alert(1)">회원가입</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+<script>
+function test(a){
+	alert("난 테스트 함수1");
+}
+function test(){
+	alert("난 테스트 함수2");
+}
+</script>	
+</body>
+</html>
