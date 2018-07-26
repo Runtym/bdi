@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	td{
+		cursor:pointer;
+	}
+</style>
+</head>
+<body>
+로우갯수 : <input type="text" id="rowCnt"><br>
+컬럼갯수 : <input type="text" id="colCnt"><br>
+<button type="button" onclick="makeTable()">테이블 생성</button>
+<div id="tDiv">
+</div>
+<script>
+function makeTable(){
+	var tDiv = document.querySelector('#tDiv');
+	var tableHtml = '<table border="1">';
+	var rowCnt = document.querySelector('#rowCnt');
+	var colCnt = document.querySelector('#colCnt');
+	var cnt = 1;
+	var totalCnt = parseInt(rowCnt.value) * parseInt(colCnt.value);
+	
+	var bombCnt = Math.floor(Math.random() * totalCnt) + 1;
+	 
+	for(var i=0;i<rowCnt.value;i++){
+		tableHtml += '<tr>';
+		for(var j=0;j<colCnt.value;j++){
+			if(cnt==bombCnt){
+				tableHtml += '<td onclick="check(this,1)">■</td>';
+			}else{
+				tableHtml += '<td onclick="check(this)">■</td>';
+			}
+			cnt++;
+		}
+		tableHtml += '</tr>';
+	}
+	tableHtml += '</table>';
+	tDiv.innerHTML = tableHtml;
+}
+
+function check(obj,isBomb){
+	if(isBomb){
+		alert("찾았다 폭탄!!");
+		return;
+	}
+	obj.innerHTML='X';
+}
+</script>
+</body>
+</html>

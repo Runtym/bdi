@@ -5,7 +5,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form>
+	<form onsubmit="return checkValue(this)">
 		<table border="1">
 			<tr>
 				<th>아이디</th>
@@ -26,5 +26,22 @@
 			</tr>
 		</table>
 	</form>
+<script>
+	function checkValue(fObj){
+		if(fObj.id.value.trim().length<5){
+			alert("id는 5글자 이상이여야 합니다.");
+			fObj.id.value="";
+			fObj.id.focus();
+			return false;
+		}
+		if(fObj.pwd.value.trim().length<5){
+			alert("비밀번호는 5글자 이상이여야 합니다.");
+			fObj.pwd.value="";
+			fObj.pwd.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </body>
 </html>
