@@ -16,16 +16,20 @@
 <div id="tDiv">
 </div>
 <script>
+var xCnt = 0;
+var totalCnt = 0;
+
 function makeTable(){
+	xCnt = 0;
 	var tDiv = document.querySelector('#tDiv');
 	var tableHtml = '<table border="1">';
 	var rowCnt = document.querySelector('#rowCnt');
 	var colCnt = document.querySelector('#colCnt');
 	var cnt = 1;
-	var totalCnt = parseInt(rowCnt.value) * parseInt(colCnt.value);
+	totalCnt = parseInt(rowCnt.value) * parseInt(colCnt.value);
 	
 	var bombCnt = Math.floor(Math.random() * totalCnt) + 1;
-	 
+	alert(bombCnt);
 	for(var i=0;i<rowCnt.value;i++){
 		tableHtml += '<tr>';
 		for(var j=0;j<colCnt.value;j++){
@@ -48,6 +52,10 @@ function check(obj,isBomb){
 		return;
 	}
 	obj.innerHTML='X';
+	xCnt++;
+	if(xCnt+1==totalCnt){
+		alert("너도 재수 참 없다...");
+	}
 }
 </script>
 </body>
