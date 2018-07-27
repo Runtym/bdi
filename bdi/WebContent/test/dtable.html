@@ -19,6 +19,14 @@
 var xCnt = 0;
 var totalCnt = 0;
 
+function isContain(arr,idx){
+	for(var v of arr){
+		if(v==idx){
+			return true;
+		}
+	}
+	return false;
+}
 function makeTable(){
 	xCnt = 0;
 	var tDiv = document.querySelector('#tDiv');
@@ -28,12 +36,15 @@ function makeTable(){
 	var cnt = 1;
 	totalCnt = parseInt(rowCnt.value) * parseInt(colCnt.value);
 	
-	var bombCnt = Math.floor(Math.random() * totalCnt) + 1;
-	alert(bombCnt);
+	var bombCnt = new Array();
+	for(var i=0;i<3;i++){
+		bombCnt.push(Math.floor(Math.random() * totalCnt) + 1);
+	}
+	console.log(bombCnt);
 	for(var i=0;i<rowCnt.value;i++){
 		tableHtml += '<tr>';
 		for(var j=0;j<colCnt.value;j++){
-			if(cnt==bombCnt){
+			if(isContain(bombCnt,cnt)){
 				tableHtml += '<td onclick="check(this,1)">■</td>';
 			}else{
 				tableHtml += '<td onclick="check(this)">■</td>';
