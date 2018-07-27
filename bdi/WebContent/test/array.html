@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array Test</title>
+</head>
+<body>
+<script>
+	var arr = new Array();
+	arr.push('1');
+	arr.push('2');
+	
+	
+	arr = ['1','2','3'];
+	arr.shift();
+	arr.unshift('1');
+	arr.pop();
+	arr.push('3');
+	arr.splice(1,2);
+	for(var i=0;i<arr.length;i++){
+		document.write(arr[i] + '<br>');
+	}
+	
+</script>
+</body>
+</html>

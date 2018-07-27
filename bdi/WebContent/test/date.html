@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="rDiv"></div>
+<button type="button" 
+onclick="showDateTime()">시간보기</button>
+<script>
+	function showDateTime(){
+		var toDay = new Date();
+		var yyyy = toDay.getFullYear();
+		var mm = toDay.getMonth()+1;
+		var dd = toDay.getDate();		
+		var hh = toDay.getHours();
+		var mi = toDay.getMinutes();
+		var ss = toDay.getSeconds();
+		var str = yyyy + '년 ' + mm + '월 ' + dd + '일';
+		str += '<br>' + hh + '시 ' + mi + '분 ' + ss + '초 ' 
+		document.querySelector('#rDiv').innerHTML= str;
+	}
+</script>
+</body>
+</html>
