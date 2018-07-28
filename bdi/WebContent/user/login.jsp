@@ -11,6 +11,9 @@
 
 String id = request.getParameter("id");
 String pwd = request.getParameter("pwd");
+session.setAttribute("id",id);
+session.setAttribute("pwd",pwd);
+
 if(id==null){
 	out.println("아이디를 입력해주세요.");
 	return;

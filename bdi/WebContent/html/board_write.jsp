@@ -8,6 +8,10 @@
 </head>
 <body>
 <%
+session.setAttribute("name","홍길동");
+
+String name = (String)session.getAttribute("name");
+
 String title = request.getParameter("title");
 String content = request.getParameter("content");
 
@@ -36,7 +40,7 @@ if(title==null){
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" disabled></td>
+			<td><input type="text" disabled value="<%=name%>"></td>
 		</tr>
 		<tr>  
 			<td colspan="2" style="text-align:center"><button>등록</button></td>
