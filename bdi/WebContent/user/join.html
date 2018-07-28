@@ -5,84 +5,47 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
-		<table border="1">
-			<tr>
-				<th><label for="name"> 이름</label></th>
-				<td><input type="text" id="name"></td>
-			</tr>
-			<tr>
-				<th><label for="birth">생년월일</label></th>
-				<td><input type="text" id="birth"></td>
-			</tr>
-			<tr>
-				<th><label for="email">Email</label></th>
-				<td><input type="text" id="email"></td>
-			</tr>
-			<tr>
-				<th><label for="id">ID</label></th>
-				<td><input type="text" id="id"></td>
-			</tr>
-			<tr>
-				<th><label for="pwd">Password</label></th>
-				<td><input type="password" id="pwd"></td>
-			</tr>
-			<tr>
-				<th><label for="trans">성별</label></th>
-				<td>
-					<select id="trans">
-						<option value="">선택</option>
-						<option value="1">남</option>
-						<option value="2">여</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<button type="button" 
-					onclick="checkValue()">회원가입</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-<script>
-	function checkValue(){
-		var nameObj = document.getElementById("name");
-		if(nameObj.value.trim().length<2){
-			alert("이름은 2글자 이상입니다.");
-			nameObj.value = "";
-			nameObj.focus();
-			return false;
-		}
-		var birthObj = document.getElementById("birth");
-		if(birthObj.value.trim().length<6){
-			alert("생년월일은 6글자 이상입니다.");
-			birthObj.value = "";
-			birthObj.focus();
-			return false;
-		}
-		var emailObj = document.getElementById("email");
-		if(emailObj.value.trim().length<6){
-			alert("eMail은 6글자 이상입니다.");
-			emailObj.value = "";
-			emailObj.focus();
-			return false;
-		}
-		var idObj = document.getElementById("id");
-		if(idObj.value.trim().length<6){
-			alert("아이디는 6글자 이상입니다.");
-			idObj.value = "";
-			idObj.focus();
-			return false;
-		}
-		var pwdObj = document.getElementById("pwd");
-		if(pwdObj.value.trim().length<6){
-			alert("비밀번호는 6글자 이상입니다.");
-			pwdObj.value = "";
-			pwdObj.focus();
-			return false;
-		}
-	}
-</script>	
+<form action="/user/join.jsp">
+	<table border="1">
+		<tr>
+			<th colspan="2"> = 회원가입 = </th>
+		</tr>
+		<tr>
+			<th><label for="id">ID : </label></th>
+			<td><input type="text" name="id" id="id"></td>
+		</tr>
+		<tr>
+			<th><label for="age">나이 : </label></th>
+			<td><input type="number" min="0" max="140"
+				id="age" name="age"
+			></td>
+		</tr>
+		<tr>
+			<th><label for="email">eMail : </label></th>
+			<td><input type="email" id="email" name="email"></td>
+		</tr>
+		<tr>
+			<th><label for="pwd">비밀번호 : </label></th>
+			<td><input type="password" id="pwd" name="pwd"></td>
+		</tr>
+		<tr>
+			<th>취미</th>
+			<td><label for="ho1">영화감상</label>
+			<input type="checkbox" id="ho1" name="hobby" value="영화감상">
+			<label for="ho2">음악감상</label>
+			<input type="checkbox" id="ho2" name="hobby" value="음악감상">
+			<label for="ho3">개발</label>
+			<input type="checkbox" id="ho3" name="hobby" value="개발">
+			<label for="ho4">게임</label>
+			<input type="checkbox" id="ho4" name="hobby" value="게임">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style='text-align:center'>
+				<button>회원가입</button>
+			</td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

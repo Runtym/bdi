@@ -11,8 +11,24 @@
 
 String id = request.getParameter("id");
 String pwd = request.getParameter("pwd");
-out.write("니가 입력한 ID : " + id);
-out.write("니가 입력한 비밀번호 : " + pwd);
+if(id==null){
+	out.println("아이디를 입력해주세요.");
+	return;
+}
+if(pwd==null){
+	out.println("비밀 번호를 입력해주세요.");
+	return;
+}
+
+if(id.equals("test1")){
+	if(pwd.equals("test1")){
+		out.println("와우~ 로그인 성공~");
+	}else{
+		out.println("비밀번호를 다시 입력해주세요.");
+	}
+}else{
+	out.println("없는 아이디입니다. 다시 확인해주세요.");
+}
 %>
 </body>
 </html>
