@@ -1,8 +1,15 @@
 package bdi;
 
-public class Test {
+import java.util.ArrayList;
 
+public class Test {
+	public void test(){
+		
+	}
+	
 	public static void main(String[] args) {
-		System.out.println("abc");
+
+		
+		ArrayList al = new ArrayList();
 	}
 }
