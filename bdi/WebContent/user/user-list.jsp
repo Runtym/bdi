@@ -7,8 +7,9 @@
     pageEncoding="UTF-8"%>
 <%
 String search = request.getParameter("search");
+String type = request.getParameter("type");
 UserService us = UserService.getUS();
-List<Map<String,String>> userList = us.getUserList(search);
+List<Map<String,String>> userList = us.getUserList(type, search);
 %>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,13 @@ List<Map<String,String>> userList = us.getUserList(search);
 <div class="container">
 	<div style="height:60px;padding:10px">
 		<form>
-			주소 : <input type="text" name="search">
+			<select name="type">
+				<option value="name">이름</option>
+				<option value="age" selected>나이</option>
+				<option value="address">주소</option>
+				<option value="id">아이디</option>
+			</select> : <input type="text" name="search"
+			value="<%=search!=null?search:""%>">
 			<button>검색</button>
 		</form>
 	</div>

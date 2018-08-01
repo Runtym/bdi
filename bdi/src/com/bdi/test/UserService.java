@@ -32,7 +32,7 @@ public class UserService {
 		}
 		return userList;
 	}
-	public List<Map<String,String>> getUserList(String search){
+	public List<Map<String,String>> getUserList(String type, String search){
 		if(userList==null) {
 			getUserList();
 		}
@@ -41,7 +41,7 @@ public class UserService {
 		}
 		List<Map<String,String>> userList = new ArrayList<Map<String,String>>();
 		for(Map<String,String> user:this.userList) {
-			if(user.get("address").indexOf(search)!=-1) {
+			if(user.get(type).indexOf(search)!=-1) {
 				userList.add(user);
 			}
 		}
