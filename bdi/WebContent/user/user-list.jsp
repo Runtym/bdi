@@ -1,3 +1,4 @@
+<%@page import="com.bdi.test.UserService"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
@@ -5,18 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-List<Map<String,String>> userList = 
-new ArrayList<Map<String,String>>();
-
-for(int i=1;i<=10;i++){
-	Map<String,String> user = new HashMap<String,String>();
-	int rNum = (int)(Math.random()*50);
-	user.put("name","홍길동" + i);
-	user.put("age","" + rNum);
-	user.put("address","서울 영등포구 여의도동 " + rNum + "번지");
-	user.put("id", "hong" + rNum);
-	userList.add(user);
-}
+String search = request.getParameter("search");
+UserService us = UserService.getUS();
+List<Map<String,String>> userList = us.getUserList(search);
 %>
 <!DOCTYPE html>
 <html>
@@ -34,6 +26,12 @@ for(int i=1;i<=10;i++){
 <body>
 
 <div class="container">
+	<div style="height:60px;padding:10px">
+		<form>
+			주소 : <input type="text" name="search">
+			<button>검색</button>
+		</form>
+	</div>
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
@@ -45,13 +43,14 @@ for(int i=1;i<=10;i++){
 		</thead>
 		<tbody>
 <%
-for(int i=1;i<=10;i++){
+for(int i=0;i<userList.size();i++){
+	Map<String,String> user = userList.get(i);
 %>
 			<tr>
-				<td>홍길동<%=i%></td>
-				<td><%=i+10 %></td>
-				<td>서울 구로구 가산동 <%=i%>번지</td>
-				<td>hone<%=i%></td>
+				<td><%=user.get("name")%></td>
+				<td><%=user.get("age")%></td>
+				<td><%=user.get("address")%></td>
+				<td><%=user.get("id")%></td>
 			</tr>
 <%
 }
