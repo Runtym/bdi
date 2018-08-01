@@ -5,6 +5,17 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%!
+	public String checkSel(String str1,String str2){
+		if(str1==null){
+			return "";
+		}
+		if(!str1.equals(str2)){
+			return "";
+		}
+		return "selected";
+	}
+%>
 <%
 String search = request.getParameter("search");
 String type = request.getParameter("type");
@@ -30,10 +41,10 @@ List<Map<String,String>> userList = us.getUserList(type, search);
 	<div style="height:60px;padding:10px">
 		<form>
 			<select name="type">
-				<option value="name">이름</option>
-				<option value="age" selected>나이</option>
-				<option value="address">주소</option>
-				<option value="id">아이디</option>
+				<option value="name" <%=checkSel(type,"name")%>>이름</option>
+				<option value="age" <%=checkSel(type,"age")%>>나이</option>
+				<option value="address" <%=checkSel(type,"address")%>>주소</option>
+				<option value="id" <%=checkSel(type,"id")%>>아이디</option>
 			</select> : <input type="text" name="search"
 			value="<%=search!=null?search:""%>">
 			<button>검색</button>

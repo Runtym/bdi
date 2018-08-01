@@ -25,7 +25,9 @@ public class UserService {
 				int rNum = (int)(Math.random()*50);
 				user.put("name","홍길동" + i);
 				user.put("age","" + rNum);
+				rNum = (int)(Math.random()*50);
 				user.put("address","서울 영등포구 여의도동 " + rNum + "번지");
+				rNum = (int)(Math.random()*50);
 				user.put("id", "hong" + rNum);
 				userList.add(user);
 			}
