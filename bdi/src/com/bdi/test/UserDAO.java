@@ -12,7 +12,7 @@ public class UserDAO {
 	private static String id = "root";
 	private static String pwd = "12345678";
 	
-	public StringBuilder getTableString(String type,String uiId) {
+	public StringBuilder getTableString(String[] types,String uiId) {
 		Connection con = null;
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -23,8 +23,12 @@ public class UserDAO {
 					"uiNo, uiId, uiPwd, uiName,uiAge,\r\n" + 
 					"depCode, uiEtc\r\n" + 
 					" from user_info";
-			if(uiId!=null && !uiId.equals("")) {
-				sql += " where " + type  + " like '%" + uiId + "%'";
+			if(uiId!=null && !uiId.equals("") && types !=null) {
+				sql += " where ";
+				for(String type:types) {
+					sql += type + " like '%" + uiId + "%' or ";
+				}
+				sql = sql.substring(0,sql.length()-3);
 			}
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {

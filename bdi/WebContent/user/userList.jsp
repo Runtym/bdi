@@ -4,8 +4,16 @@
    
 <%
 String uiId = request.getParameter("uiId");
-String type = request.getParameter("type");
-out.println("니가 검색한 " + type + " : " + uiId);
+String[] types = request.getParameterValues("type");
+
+
+String typeStr = "";
+if(types!=null){
+	for(String str:types){
+		typeStr += "," + str;
+	}
+	typeStr = typeStr.substring(1);
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -19,13 +27,12 @@ out.println("니가 검색한 " + type + " : " + uiId);
 <div class="container">
 	<div style="margin:10px">
 		<form>
-			<select name="type">
-				<option value="uiNo" >번호</option>
-				<option value="uiId" >아이디</option>
-				<option value="uiName" >이름</option>
-				<option value="uiAge" >나이</option>
-				<option value="uiEtc" >비고</option>
-			</select> 
+			<input type="checkbox" value="uiId" name="type" id="id">
+			<label for="id">아이디</label>
+			<input type="checkbox" value="uiName" name="type" id="name">
+			<label for="name">이름</label>
+			<input type="checkbox" value="uiEtc" name="type" id="etc">
+			<label for="etc">비고</label>
 			: <input type="text" name="uiId" value="<%=uiId!=null?uiId:""%>">
 			<button>검색</button>
 		</form>
@@ -45,7 +52,7 @@ out.println("니가 검색한 " + type + " : " + uiId);
 		<tbody>
 <%
 UserDAO udao = new UserDAO();
-StringBuilder sb = udao.getTableString(type,uiId);
+StringBuilder sb = udao.getTableString(types,uiId);
 out.println(sb.toString());
 %>
 		</tbody>
@@ -53,9 +60,13 @@ out.println(sb.toString());
 </div>
 
 <script>
-	var type = "<%=type%>";
-	if(type!="null"){
-		document.querySelector("select option[value=" + type + "]").selected = true;
+	alert('<%=typeStr%>');
+	var types = '<%=typeStr%>'.split(',');
+	
+	if(types!='null'){
+		for(var type of types){
+			document.querySelector('input[value=' + type + ']').checked = true;
+		}
 	}
 </script>
 </body>
