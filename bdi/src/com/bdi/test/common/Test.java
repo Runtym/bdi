@@ -2,20 +2,28 @@ package com.bdi.test.common;
 
 public class Test {
 
+	private static long sTime;
+	private static long eTime;
+	public static void start() {
+		sTime = System.nanoTime();
+	}
+	public static void end() {
+		eTime = System.nanoTime();
+		System.out.println("execute time : " + (eTime-sTime));
+	}
 	public static void main(String[] args) {
-		String s = new String("abc");
-		
-		try {
-			Class clazz = Class.forName("java.lang.String");
-			String s2 = (String)clazz.newInstance();
-			s2 = "abc";
-			System.out.println(s2);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+		start();
+		String str = "";
+		for(int i=0;i<10000;i++) {
+			str += i;
 		}
+		end();
+
+		start();
+		StringBuilder sb = new StringBuilder();
+		for(int i=0;i<10000;i++) {
+			sb.append(i);
+		}
+		end();
 	}
 }
