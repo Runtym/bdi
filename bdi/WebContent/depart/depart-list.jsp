@@ -37,6 +37,7 @@ List<Map<String,String>> departList = ds.getDepartList();
 		</thead>
 		<tbody>
 <%
+
 for(int i=0;i<departList.size();i++){
 	Map<String,String> depart = departList.get(i);
 %>
